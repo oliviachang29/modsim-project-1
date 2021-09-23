@@ -18,9 +18,9 @@ function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma, alpha)
 %   r_n = next number of recovered individuals
 
 % compute new infections and recoveries
-infected = beta * i * s
-recovered = gamma * i
-vaccinated = alpha * s
+infected = beta * i * s;
+recovered = gamma * i;
+vaccinated = alpha * s;
 
 % Enforce invariants
 
@@ -32,16 +32,9 @@ recovered = min(total - r, recovered); % Cannot recover more than total
 %}
 
 % Update state
-s
-i
-r
-s_n = s - infected - vaccinated
-i_n = i + infected - recovered
-r_n = r + recovered + vaccinated
+s_n = s - infected - vaccinated;
+i_n = i + infected - recovered;
+r_n = r + recovered + vaccinated;
 
-% This way of enforcing invariants does not actually conserve persons!
-%s_n = max(s_n, 0);
-%i_n = max(i_n, 0);
-%r_n = max(r_n, 0);
     
 end
