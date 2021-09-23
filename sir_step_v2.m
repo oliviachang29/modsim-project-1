@@ -1,4 +1,4 @@
-function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma)
+function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma, alpha)
 % fcn_step Advance an SIR model one timestep
 %
 % Usage
@@ -18,20 +18,26 @@ function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma)
 %   r_n = next number of recovered individuals
 
 % compute new infections and recoveries
-infected = beta * i * s;
-recovered = gamma * i;
+infected = beta * i * s
+recovered = gamma * i
+vaccinated = alpha * s
 
 % Enforce invariants
+
 total = s + i + r;
 infected = min(s, infected);           % Cannot infect more people than current s
 infected = min(total - i, infected);   % Cannot infect more than total
 recovered = min(i, recovered);         % Cannot recover more people than current i
 recovered = min(total - r, recovered); % Cannot recover more than total
+%}
 
 % Update state
-s_n = s - infected;
-i_n = i + infected - recovered;
-r_n = r + recovered;
+s
+i
+r
+s_n = s - infected - vaccinated
+i_n = i + infected - recovered
+r_n = r + recovered + vaccinated
 
 % This way of enforcing invariants does not actually conserve persons!
 %s_n = max(s_n, 0);
