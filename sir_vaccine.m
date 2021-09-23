@@ -1,4 +1,4 @@
-function [S, I, R, W] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, num_steps)
+function [S, I, R, W] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps)
 % fcn_simulate Simulate a SIR model
 %
 % Usage
@@ -37,7 +37,7 @@ R(1) = r;
 
 % Run simulation
 for step = 2 : num_steps
-    [s, i, r] = sir_step_v2(s, i, r, beta, gamma, alpha);
+    [s, i, r] = sir_step_v2(s, i, r, beta, gamma, alpha, omega);
     S(step) = s;
     I(step) = i;
     R(step) = r;
