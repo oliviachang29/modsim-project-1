@@ -1,4 +1,4 @@
-function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma, alpha)
+function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma, alpha, omega)
 % fcn_step Advance an SIR model one timestep
 %
 % Usage
@@ -21,6 +21,7 @@ function [s_n, i_n, r_n] = sir_step_v2(s, i, r, beta, gamma, alpha)
 infected = beta * i * s;
 recovered = gamma * i;
 vaccinated = alpha * s;
+reinfected = omega * r;
 
 % Enforce invariants
 
@@ -30,11 +31,13 @@ infected = min(total - i, infected);   % Cannot infect more than total
 recovered = min(i, recovered);         % Cannot recover more people than current i
 recovered = min(total - r, recovered); % Cannot recover more than total
 %}
+reinfected = min(r, reinfected); % cannot reinfect more than recovered
 
 % Update state
-s_n = s - infected - vaccinated;
+
+s_n = s - infected - vaccinated + reinfected;
 i_n = i + infected - recovered;
-r_n = r + recovered + vaccinated;
+r_n = r + recovered + vaccinated - reinfected;
 
     
 end
