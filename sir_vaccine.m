@@ -39,11 +39,11 @@ I_total = 0;
 
 % Run simulation
 for step = 2 : num_steps
-    [s, i, r, verifiedFlow] = sir_step_v2(s, i, r, beta, gamma, alpha, omega);
+    [s, i, r, verifiedFlow, infected] = sir_step_v2(s, i, r, beta, gamma, alpha, omega);
     S(step) = s;
     I(step) = i;
     R(step) = r;
-    I_total = I_total + i;
+    I_total = I_total + infected;
     if verifiedFlow == false
         verifiedSimulation = false;
     end

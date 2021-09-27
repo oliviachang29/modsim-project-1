@@ -20,12 +20,9 @@ function I_total_baseline = plot_baseline()
 
     xlabel("Week")
     ylabel("Infected Persons")
-    total_cases_text = text(95,18,"Total Cases:");
-    total_cases_text.FontWeight = 'bold';
+    text(95,18,"Total Cases:")
     text(105,16.5,"Baseline: " + round(I_total_baseline))
-    verified_text= text(95, 12, "Verified:");
-    verified_text.FontWeight = 'bold';
-    t = text(105, 10.5, "Baseline");
+    t = text(105, 11, "Baseline " + verifiedBaseline);
     t.Color = 'green';
     if verifiedBaseline == false
         t.Color = 'red';

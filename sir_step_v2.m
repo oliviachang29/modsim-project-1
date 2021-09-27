@@ -1,4 +1,4 @@
-function [s_n, i_n, r_n, verifiedFlow] = sir_step_v2(s, i, r, beta, gamma, alpha, omega)
+function [s_n, i_n, r_n, verifiedFlow, infected] = sir_step_v2(s, i, r, beta, gamma, alpha, omega)
     % fcn_step Advance an SIR model one timestep
     %
     % Usage

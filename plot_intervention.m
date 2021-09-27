@@ -8,7 +8,7 @@ function null = plot_intervention(beta, gamma, alpha, omega, I_total_baseline, s
     legend({'Baseline', 'Tweaked'}) % Baseline needs to go first!
     text(105,15,"Tweaked: " + round(I_total_tweaked))
     text(105,13.5,"Reduction: " + round(I_total_baseline - I_total_tweaked))
-    t = text(105, 9.5, "Verified Intervention: " + verifiedIntervention);
+    t = text(105, 9, "Intervention");
     t.Color = 'green';
     if verifiedIntervention == false
         t.Color = 'red';
