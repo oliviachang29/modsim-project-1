@@ -1,7 +1,6 @@
 function null = plot_intervention(beta, gamma, alpha, omega, I_total_baseline, simulation_name)
     global num_steps i_0 s_0 r_0;
-    [S, I, R, W, I_total_tweaked, verifiedIntervention] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
-
+    [S, I, R, W, V, I_total_tweaked, V_total, verifiedIntervention] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
     % Plot graph
     plot(W, I);
     title(simulation_name)
@@ -13,5 +12,5 @@ function null = plot_intervention(beta, gamma, alpha, omega, I_total_baseline, s
     if verifiedIntervention == false
         t.Color = 'red';
     end
-
+    V_total
 end

@@ -11,8 +11,7 @@ function I_total_baseline = plot_baseline()
     % omega should be 1 / time to lose immunity
     % in training data: approx 52 weeks (can assume this is a year)
     
-    [S, I, R, W, I_total_baseline, verifiedBaseline] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
-
+    [S, I, R, W, V, I_total_baseline, V_total, verifiedBaseline] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
     % Plot graph
     figure(1); clf; hold on;
     xticks(0:axis_tick_interval:num_steps); % add axis ticks
@@ -22,7 +21,7 @@ function I_total_baseline = plot_baseline()
     ylabel("Infected Persons")
     total_cases_text = text(95,18,"Total Cases:");
     total_cases_text.FontWeight = 'bold';
-    text(105,16.5,"Baseline: " + round(I_total_baseline))
+    text(105,16.5,"Baseline: " + round(I_total_baseline));
     verified_text= text(95, 12, "Verified:");
     verified_text.FontWeight = 'bold';
     t = text(105, 10.5, "Baseline");

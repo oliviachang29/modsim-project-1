@@ -1,4 +1,4 @@
-function [S, I, R, W, V, I_total, V_total, verifiedSimulation] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps)
+function [S, I, R, W, I_total, verifiedSimulation] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps)
 % fcn_simulate Simulate a SIR model
 %
 % Usage
@@ -25,7 +25,6 @@ S = zeros(1, num_steps);
 I = zeros(1, num_steps);
 R = zeros(1, num_steps);
 W = 1 : num_steps;
-V = zeros(1, num_steps);
 verifiedSimulation = true;
 
 s = s_0;
@@ -36,9 +35,8 @@ r = r_0;
 S(1) = s;
 I(1) = i;
 R(1) = r;
-V(1) = 0;
 I_total = 0;
-V_total = 0;
+V_total = 
 
 % Run simulation
 for step = 2 : num_steps
@@ -46,9 +44,7 @@ for step = 2 : num_steps
     S(step) = s;
     I(step) = i;
     R(step) = r;
-    V(step) = vaccinated;
     I_total = I_total + infected;
-    V_total = V_total + vaccinated;
     if verifiedFlow == false
         verifiedSimulation = false;
     end
