@@ -28,5 +28,5 @@ function null = plot_intervention(beta, gamma, alpha, omega, I_total_baseline, s
     if verifiedIntervention == false
         t.Color = 'red';
     end
-    V_total
+    text(94, 7.5, "Tot. Vaccinations: " + round(V_total));
 end
