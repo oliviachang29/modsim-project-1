@@ -1,4 +1,12 @@
 function I_total_baseline = plot_baseline()
+    % fcn_plot_baseline plot the baseline
+    %
+    % Usage
+    %   I_total_baseline = fcn_plot_baseline()
+    %
+    % Returns
+    %   I_total_baseline = the total number of infections in baseline case
+
     global num_steps i_0 s_0 r_0;
     % Setup
     axis_tick_interval = 5; 
@@ -11,6 +19,7 @@ function I_total_baseline = plot_baseline()
     % omega should be 1 / time to lose immunity
     % in training data: approx 52 weeks (can assume this is a year)
     
+    % run sir_vaccine for baseline case
     [S, I, R, W, V, I_total_baseline, V_total, verifiedBaseline] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
     % Plot graph
     figure(1); clf; hold on;
