@@ -20,7 +20,7 @@ function I_total_baseline = plot_baseline()
     % in training data: approx 52 weeks (can assume this is a year)
     
     % run sir_vaccine for baseline case
-    [S, I, R, W, V, I_total_baseline, V_total, verifiedBaseline] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
+    [S, I, R, W, V, I_total_baseline, ~, verifiedBaseline] = sir_vaccine(s_0, i_0, r_0, beta, gamma, alpha, omega, num_steps);
     % Plot graph
     figure(1); clf; hold on;
     xticks(0:axis_tick_interval:num_steps); % add axis ticks

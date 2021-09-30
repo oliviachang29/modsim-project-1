@@ -32,6 +32,7 @@ R = zeros(1, num_steps);
 W = 1 : num_steps;
 V = zeros(1, num_steps);
 verifiedSimulation = true;
+initial_total_persons = s_0 + i_0 + r_0;
 
 s = s_0;
 i = i_0;
@@ -54,6 +55,14 @@ for step = 2 : num_steps
     V(step) = vaccinated;
     I_total = I_total + infected;
     V_total = V_total + vaccinated;
+    
+    % if the total number of persons is not 100
+    % then the simulation is not verified
+    % sometimes s+i+r is a float, convert to integer to compare to 100
+    total_persons = int8(s + i + r);
+    if total_persons ~= initial_total_persons
+        verifiedSimulation = false;
+    end
 
     % if the flow for one week is not veriffied, then the simulation is not
     % verified
