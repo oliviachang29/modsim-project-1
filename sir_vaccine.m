@@ -64,7 +64,7 @@ for step = 2 : num_steps
         verifiedSimulation = false;
     end
 
-    % if the flow for one week is not veriffied, then the simulation is not
+    % if the flow for one week is not verified, then the simulation is not
     % verified
     if verifiedFlow == false
         verifiedSimulation = false;
